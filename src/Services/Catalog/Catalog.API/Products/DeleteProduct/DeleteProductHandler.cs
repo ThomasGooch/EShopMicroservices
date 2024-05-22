@@ -9,7 +9,7 @@ namespace Catalog.API.Products.DeleteProduct
         {
             logger.LogInformation("DeleteProductCommandHandler.Handle called with {@Command}", command);
 
-            var productToDelete = await session.LoadAsync<Product>(command.Id, cancellationToken) ?? throw new ProductNotFoundException();
+            var productToDelete = await session.LoadAsync<Product>(command.Id, cancellationToken) ?? throw new ProductNotFoundException(command.Id);
 
             session.Delete(productToDelete);
 

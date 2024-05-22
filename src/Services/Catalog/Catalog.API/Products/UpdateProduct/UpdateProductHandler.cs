@@ -10,7 +10,7 @@
             logger.LogInformation("UpdateProductCommandHandler.Handle called with {@Command}", command);
 
             // find a Product entity from command
-            var productForUpdate = await session.LoadAsync<Product>(command.Id, cancellationToken) ?? throw new ProductNotFoundException();
+            var productForUpdate = await session.LoadAsync<Product>(command.Id, cancellationToken) ?? throw new ProductNotFoundException(command.Id);
 
             productForUpdate.Name = command.Name;
             productForUpdate.Categories = command.Categories;

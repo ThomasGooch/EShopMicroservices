@@ -1,7 +1,4 @@
-﻿
-using Catalog.API.Exceptions;
-
-namespace Catalog.API.Products.GetProducts;
+﻿namespace Catalog.API.Products.GetProducts;
 
 public record GetProductByIdQuery(Guid Id) : IQuery<GetProductByIdResult>;
 
@@ -17,7 +14,7 @@ internal class GetProductByIdQueryHandler(IDocumentSession session, ILogger<GetP
 
         if (product == null)
         {
-            throw new ProductNotFoundException();
+            throw new ProductNotFoundException(query.Id);
         }
 
         return new GetProductByIdResult(product);
