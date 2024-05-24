@@ -12,7 +12,7 @@
             var productForUpdate = await session.LoadAsync<Product>(command.Id, cancellationToken) ?? throw new ProductNotFoundException(command.Id);
 
             productForUpdate.Name = command.Name;
-            productForUpdate.Categories = command.Categories;
+            productForUpdate.Category = command.Categories;
             productForUpdate.Description = command.Description;
             productForUpdate.ImageFile = command.ImageFile;
             productForUpdate.Price = command.Price;
